@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 会以namespace 和 id 在mapper 中查询具体的方法
+         resultType 表示返回对象的数据类型
+         parameterType 表示传入的数据对象
+         id  唯一标识，要与命名空间（抽象方法）中定义的方法名称一致
+ -->
+<mapper namespace="com.example.demo.mapper.UserMapper">
+<!--    <select id="findAll" resultType="com.banyu.achieve.xml.domain.User">-->
+<!--        select * from user;-->
+<!--    </select>-->
+    <update id="update">
+        update user
+        <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="age != null">
+                age = #{age}
+            </if>
+            <if test="hobby_pic != null">
+                hobbyPic = #{hobby_pic}
+            </if>
+        </set>
+        <where>
+            id = #{id}
+        </where>
+    </update>
+<!--    <insert id="saveUser" parameterType="com.banyu.achieve.xml.domain.User" >-->
+<!--        &lt;!&ndash; 将自增id存入user对象中 &ndash;&gt;-->
+<!--        <selectKey keyColumn="id" resultType="int" order="AFTER" keyProperty="id">-->
+<!--            select last_insert_id()-->
+<!--        </selectKey>-->
+<!--        insert into user(username,birthday,sex,address) values (#{username},#{birthday},#{sex},#{address})-->
+<!--    </insert>-->
+<!--    <update id="updateUser" parameterType="com.banyu.achieve.xml.dao.IUserDao">-->
+<!--        update user set username =#{username},sex=#{sex},birthday=#{birthday},address=#{address} where id =#{id}-->
+<!--    </update>-->
+<!--    <select id="findUserByName" parameterType="String" resultType="user">-->
+<!--        &lt;!&ndash; 使用这种会有sql  注入风险   select * from user where username like "%${name}%" &ndash;&gt;-->
+<!--        &lt;!&ndash; select * from user where username like #{name} &ndash;&gt;-->
+<!--        select * from user where username like "%${name}%"-->
+<!--    </select>-->
+
+<!--    <select id="getTotal" resultType="int" >-->
+<!--        select count(*) from user-->
+<!--    </select>-->
+
+<!--    <delete id="deleteUser" parameterType="int">-->
+<!--        delete from user where id = #{id}-->
+<!--    </delete>-->
+
+<!--    <select id="findUserById" parameterType="int" resultType="user">-->
+<!--        select * from user where id = #{id}-->
+<!--    </select>-->
+</mapper>
